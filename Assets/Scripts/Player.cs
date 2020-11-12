@@ -37,6 +37,7 @@ public class Player : MonoBehaviour {
         Jump();
         ClimbLadder();
         FlipSprite();
+        TestGroundAndClimbCollision();
     }
 
 
@@ -66,13 +67,14 @@ public class Player : MonoBehaviour {
 
         var deltaY = Input.GetAxis("Vertical"); //value is between -1 to +1
 
-        Vector2 playerClimbVelocity = new Vector2(myRigidBody.velocity.x, deltaY * climbSpeed);
+        Vector2 playerClimbVelocity = new Vector2(myRigidBody.velocity.x, deltaY * climbSpeed); 
             
         myRigidBody.velocity = playerClimbVelocity;
 
         myRigidBody.gravityScale = 0f;
         
-        UpdateClimbAnimation(); 
+        UpdateClimbAnimation();
+   
     }
 
 
@@ -84,6 +86,7 @@ public class Player : MonoBehaviour {
             return;
         }
 
+        myAnimator.enabled = true;
         myAnimator.SetBool("Jumping", false);
 
         if (Input.GetButtonDown("Jump") == true) {
@@ -94,11 +97,13 @@ public class Player : MonoBehaviour {
 
 
     private void FlipSprite() {
+
         //if player is moving horizontally, reverse the current scaling on the x axis. this is saying IF we are moving, then this bool MUST be true
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
 
         //our scaling becomes +1 or -1 depending on the SIGN of the movement, so we are setting it to -1 if we are moving left or +1 if we are moving right, without needing an else statement, keeping our Y scaling at 1f, the norm
         if (playerHasHorizontalSpeed == true) {
+            myAnimator.enabled = true;
             transform.localScale = new Vector2(Mathf.Sign(myRigidBody.velocity.x), 1f);
         } 
     }
@@ -110,6 +115,7 @@ public class Player : MonoBehaviour {
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon; 
 
         if (playerHasHorizontalSpeed == true) {
+            myAnimator.enabled = true;
             myAnimator.SetBool("Running", true);
         } else {
             myAnimator.SetBool("Running", false);
@@ -120,13 +126,31 @@ public class Player : MonoBehaviour {
     private void UpdateClimbAnimation() {
 
         bool playerHasVerticalSpeed = Mathf.Abs(myRigidBody.velocity.y) > Mathf.Epsilon; 
+        myAnimator.SetBool("Jumping", false);
+
 
         if (playerHasVerticalSpeed == true) {
+            myAnimator.enabled = true;
             myAnimator.SetBool("Climbing", true);
         } else {
+            myAnimator.enabled = false;
             myAnimator.SetBool("Climbing", false);
         }
     }
+
+
+    private void TestGroundAndClimbCollision() {
+
+        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon; 
+
+        if (myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) == true && myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")) == true && playerHasHorizontalSpeed == false) {
+            myAnimator.enabled = true;
+            myAnimator.SetBool("Jumping", false);
+            myAnimator.SetBool("Climbing", false);
+            myAnimator.SetBool("Running", false);
+        }
+    }
+
 
 
 }
