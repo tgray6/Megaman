@@ -37,7 +37,6 @@ public class Player : MonoBehaviour {
         Jump();
         ClimbLadder();
         FlipSprite();
-        TestGroundAndClimbCollision();
     }
 
 
@@ -74,6 +73,8 @@ public class Player : MonoBehaviour {
         myRigidBody.gravityScale = 0f;
         
         UpdateClimbAnimation();
+
+        TestGroundAndClimbCollision();
    
     }
 
@@ -136,14 +137,24 @@ public class Player : MonoBehaviour {
             myAnimator.enabled = false;
             myAnimator.SetBool("Climbing", false);
         }
+        
     }
 
 
+    //this puts us back into IDLE when standing under/near ladders and megaman is not moving horizontally, also tests for top of the ladder body collision so that it goes back into idle
     private void TestGroundAndClimbCollision() {
 
-        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon; 
+        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
+        bool playerHasVerticalSpeed = Mathf.Abs(myRigidBody.velocity.y) > Mathf.Epsilon; 
 
         if (myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) == true && myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")) == true && playerHasHorizontalSpeed == false) {
+            myAnimator.enabled = true;
+            myAnimator.SetBool("Jumping", false);
+            myAnimator.SetBool("Climbing", false);
+            myAnimator.SetBool("Running", false);
+        }
+
+        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")) == false && playerHasVerticalSpeed == false) {
             myAnimator.enabled = true;
             myAnimator.SetBool("Jumping", false);
             myAnimator.SetBool("Climbing", false);
