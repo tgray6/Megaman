@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 361904596}
   - component: {fileID: 361904598}
   - component: {fileID: 1023986997368375413}
+  - component: {fileID: 1342951496}
+  - component: {fileID: 7151865924157949654}
   m_Layer: 10
   m_Name: Megaman
   m_TagString: Untagged
@@ -92,7 +94,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -190467415
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -1407841185592764151, guid: 239e39bd4438ec24cb926e5ab313d3c6,
     type: 3}
@@ -184,3 +186,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5951624, y: 0.10526109}
   m_EdgeRadius: 0
+--- !u!114 &1342951496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4627641872584021150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58afb13c4406b7f4b86ace163e94cdd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  deathFX: {fileID: 8300708392301851254, guid: 618e95f20bbba0142a800d52cecd9168, type: 3}
+  durationOfDeathFX: 2
+--- !u!114 &7151865924157949654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4627641872584021150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58afb13c4406b7f4b86ace163e94cdd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  deathFX: {fileID: 8300708392301851254, guid: 618e95f20bbba0142a800d52cecd9168, type: 3}
+  durationOfDeathFX: 2

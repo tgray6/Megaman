@@ -45,7 +45,10 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\DamageDealer.cs" />
+     <Compile Include="Assets\Scripts\Health.cs" />
+     <Compile Include="Assets\Scripts\Megaman.cs" />
+     <Compile Include="Assets\Scripts\Met.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -580,6 +583,10 @@
       <Project>{1a421364-d109-5b5a-9480-d8f3a1040d06}</Project>
       <Name>Unity.Timeline.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Cinemachine.csproj">
+      <Project>{b6863ceb-ac19-7f3d-e13c-46b5c438f3c9}</Project>
+      <Name>Cinemachine</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.2D.Animation.Runtime.csproj">
       <Project>{4a1b0b86-2c69-38c2-8f8a-e64225b77a21}</Project>
       <Name>Unity.2D.Animation.Runtime</Name>
@@ -672,6 +679,10 @@
       <Project>{d1065053-9e7a-7cf5-be61-fe85963efbd1}</Project>
       <Name>Unity.2D.Tilemap.Extras</Name>
     </ProjectReference>
+    <ProjectReference Include="com.unity.cinemachine.editor.csproj">
+      <Project>{7172eec3-10ea-e9ba-a57c-6a6d62d7142d}</Project>
+      <Name>com.unity.cinemachine.editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.Editor.csproj">
       <Project>{76efcfc9-e691-9901-8cc9-33b2e2ec5df5}</Project>
       <Name>Unity.Mathematics.Editor</Name>
@@ -691,14 +702,6 @@
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{1de2fa80-27f6-b497-ac61-4f9c1d96462a}</Project>
       <Name>UnityEditor.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="Cinemachine.csproj">
-      <Project>{b6863ceb-ac19-7f3d-e13c-46b5c438f3c9}</Project>
-      <Name>Cinemachine</Name>
-    </ProjectReference>
-    <ProjectReference Include="com.unity.cinemachine.editor.csproj">
-      <Project>{7172eec3-10ea-e9ba-a57c-6a6d62d7142d}</Project>
-      <Name>com.unity.cinemachine.editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
