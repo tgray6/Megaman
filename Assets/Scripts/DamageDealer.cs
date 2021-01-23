@@ -10,7 +10,7 @@ public class DamageDealer : MonoBehaviour {
 
         var health = otherCollider.GetComponent<Health>();
 
-        var megaman = otherCollider.GetComponent<Megaman>();
+        var megaman = otherCollider.GetComponent<CapsuleCollider2D>();
 
         if(megaman && health == true) {
             health.DealDamage(damage);
