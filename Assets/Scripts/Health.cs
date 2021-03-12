@@ -5,18 +5,20 @@ using UnityEngine;
 public class Health : MonoBehaviour {
 
     [Header("Health Stats")]
-    [SerializeField] float health = 100;
+    [SerializeField] int health = 28;
     [SerializeField] GameObject deathFX;
     [SerializeField] float durationOfDeathFX = 2f;
 
 
-    public void DealDamage(float damage) {
+    public void DealDamage(int damage) {
         health -= damage;
 
         if(health <= 0) {
             TriggerDeathFX();
             Destroy(gameObject);
         }
+
+
     }
 
 
@@ -28,6 +30,11 @@ public class Health : MonoBehaviour {
             transform.rotation) as GameObject;
 
             Destroy(deathFXObject, durationOfDeathFX);
+    }
+
+
+    public float GetHealth() {
+        return health;
     }
 
 }

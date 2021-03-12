@@ -56,7 +56,7 @@ public class Megaman : MonoBehaviour {
 
     private void ClimbLadder() {
 
-        //if megamans collider is NOT colliding with the climbing layer, which all ladders are designated, which we find through IsTouchingLayers built in method, then we won't enable climbing, otherwise, enable climbing
+        //if megamans collider is NOT colliding with the climbing layer, which all ladders are designated, which we find through IsTouchingLayers built in method, then we won't enable climbing, otherwise, enable climbing by setting gravityScale so megaman freezes in place and does not fall off ladder
         if (myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")) == false) {
             myAnimator.SetBool("Climbing", false);
             myRigidBody.gravityScale = gravityScaleAtStart;
@@ -81,7 +81,7 @@ public class Megaman : MonoBehaviour {
 
     private void Jump() {
 
-        //if megamans collider is NOT colliding with the ground layer, which we find through IsTouchingLayers built in method, then we won't enable jumping, otherwise, enable jump
+        //Here we set jumping to true any time we are not touching the Ground layer, so that falling off ledges/ladder/etc enables jumping as well, otherwise we set jumping to false UNLESS the jump button is pressed
         if (myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) == false) {
             myAnimator.SetBool("Jumping", true);
             return;

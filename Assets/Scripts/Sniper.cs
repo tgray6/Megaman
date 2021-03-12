@@ -38,7 +38,7 @@ public class Sniper : MonoBehaviour {
         var megaman = otherCollider.transform.GetComponent<Megaman>();
 
         if (megaman && health == true) { 
-            health.DealDamage(100);
+            health.DealDamage(14);
         }
             
     }

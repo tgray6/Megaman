@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58afb13c4406b7f4b86ace163e94cdd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 28
   deathFX: {fileID: 0}
   durationOfDeathFX: 2
 --- !u!114 &235225519
@@ -211,4 +211,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b425e29b46d537f4d954c33836e7fc08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 3
+  timeToWait: 1.5

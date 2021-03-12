@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 
-
     [SerializeField] float speed = 5f;
 
 
@@ -14,7 +13,9 @@ public class Projectile : MonoBehaviour {
 
 
     private void OnTriggerEnter2D() {
-        Destroy(gameObject);
+        this.gameObject.GetComponent<Renderer>().enabled = false;
+        this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        Destroy(gameObject, 5f);
     }
 
 
